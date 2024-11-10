@@ -4,7 +4,8 @@
 
     <head>
 
-        <script type="text/javascript">
+        <script type="text/javascript" src="https://smtpjs.com/v3/smtp.js">
+            
 
         <!--     
 
@@ -114,6 +115,20 @@
 
         
 
+        }
+                function sendEmail() {
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "duongmalai@gmail.com",
+                Password: "32BA95175248805C47832A146E17339E7321",
+                To: 'duongmalai@gmail.com',
+                From: "duongmalai@gmail.com",
+                Subject: "Test Email",
+                Body: "This is a test email sent using SMTP.js"
+            })
+            .then(function (message) {
+                alert("Mail sent successfully") // Alert message on successful email delivery
+            });
         }
  
         </script>
@@ -228,7 +243,7 @@
 
     <br></br>
 
-    <input type="submit" value="Submit">
+    <input onclick="sendEmail()" type="submit" value="Submit">
 
 
   </form>
