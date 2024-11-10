@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <script type="text/javascript">
+
+        <!--     
+
+        function validateblank()
+
+        {
+
+        
+
+           if( document.myForm.firstname.value == "" )
+
+           {
+
+             alert( "Please provide your first name!" );
+
+             document.myForm.firstname.focus() ;
+
+             return false;
+
+           }
+
+          
+
+          if( document.myForm.lastname.value == "" )
+
+           {
+
+             alert( "Please provide your last name!" );
+
+             document.myForm.lastname.focus() ;
+
+             return false;
+
+           }
+
+           if( document.myForm.email.value == "" )
+
+           {
+
+             alert( "Please provide your email address!" );
+
+             document.myForm.email.focus() ;
+
+             return false;
+
+           }
+
+        
+
+           if( document.myForm.subject.value == "" )
+
+           {
+
+             alert( "Please fill in the subject!" );
+
+             document.myForm.subject.focus() ;
+
+             return false;
+
+           }
+
+           return( true );
+
+        }
+
+        </script>
+
+        <script type="text/javascript">
+
+        <!--
+
+        function validateEmail()
+
+        {
+
+        
+
+           var emailID = document.myForm.email.value;
+
+           atpos = emailID.indexOf("@");
+
+           dotpos = emailID.lastIndexOf(".");
+
+           if (atpos < 1 || ( dotpos - atpos < 2 )) 
+
+           {
+
+               alert("Please enter correct email address! Example: name@mail.com")
+
+               document.myForm.email.focus() ;
+
+               return false;
+
+           }
+
+           return( true );
+
+        }
+
+        //-->
+
+           function validateForm(){
+
+          return validateblank() && validateEmail();
+
+           alert( "Thank you for submitting the contact form." );
+
+        
+
+        }
+          const express = require('express');
+
+const app = express();
+
+const port = 3000;
+
+
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+
+app.get('/', (req, res) => {
+
+    res.sendFile(__dirname + '/index.html'); // send HTML file on GET request
+
+});
+
+
+app.post('/submit-form', (req, res) => {
+
+   // const username = req.body.username; // access form data
+
+    // Add validation logic here
+
+    res.send(`Thank you for submitting the contact form.`);
+
+});
+
+
+app.listen(port, () => {
+
+    console.log(`Server running on http://localhost:${port}`);
+
+});
+
+
+        </script>
+
+        <style>
+
+        body {
+
+          font-family: Arial, Helvetica, sans-serif;
+
+          background-color: #f2f2f2; /* Grey background color */
+
+          border-radius: 5px;
+
+          padding: 20px;
+
+        }
+
+        /* Style inputs */
+
+        input[type=text], select, textarea {
+
+          width: 100%;
+
+          padding: 12px;
+
+          border: 1px solid #ccc;
+
+          margin-top: 6px;
+
+          margin-bottom: 16px;
+
+          resize: vertical;
+
+        }
+
+        
+
+        input[type=submit] {
+
+          background-color: #04AA6D;
+
+          color: white;
+
+          padding: 12px 20px;
+
+          border: none;
+
+          cursor: pointer;
+
+        }
+
+        
+
+        input[type=submit]:hover {
+
+          background-color: #358939;
+
+        }
+
+            /* Style inputs with type="text", select elements and textareas */
+
+        input[type=text], select, textarea {
+
+          width: 100%; /* Full width */
+
+          padding: 12px; /* Some padding */ 
+
+          border: 1px solid #ccc; /* Gray border */
+
+          border-radius: 4px; /* Rounded borders */
+
+          box-sizing: border-box; /* Make sure that padding and width stays in place */
+
+          margin-top: 6px; /* Add a top margin */
+
+          margin-bottom: 16px; /* Bottom margin */
+
+          resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+
+        }
+
+        
+
+    </style>
+
+<body>
+
+    <form name="myForm" action="/submit-form" method=post onsubmit="return(validateForm());">
+
+    <label for="fname">First Name: </label>
+
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <br></br>
+
+    <label for="lname">Last Name: </label>
+
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <br></br>
+
+    <label for="Email">Email Address: </label>
+
+    <input type="text" id="email" name="email" placeholder="Your Email..">
+
+    <br></br>
+
+    <label for="subject">Subject: </label> <br></br>
+
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <br></br>
+
+    <input type="submit" value="Submit">
+
+
+  </form>
+
+</body>
+
+</html>
+
+
+
+
